@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# test
+
 # [START gke_frontend_genproto]
 
 PATH=$PATH:$(go env GOPATH)/bin
