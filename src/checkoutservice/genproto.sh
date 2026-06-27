@@ -16,6 +16,7 @@
 
 # [START gke_checkoutservice_genproto]
 #
+# test
 
 PATH=$PATH:$(go env GOPATH)/bin
 protodir=../../protos
