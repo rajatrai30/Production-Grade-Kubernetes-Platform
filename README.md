@@ -1425,10 +1425,10 @@ In the current setup the CD (ArgoCD) never takes the updated image form the CI. 
 So whenever CI part is done and the image is pushed to the registry the same image tag should be automatically updated in the helm values file. After that rest ArgoCD can its job.
 
 ```bash
-#currently using the the older version of the image "v0.10.4"
+#currently using the the older version of the image "v0.10.5"
 kubectl describe po frontend-7dd5db5f5-xb7g8 -n boutique-app | grep "image"
 
-Normal  Pulled     51m   kubelet            spec.containers{server}: Container image "ghcr.io/rajatrai30/microservices-demo/frontend:v0.10.4" already present on machine
+Normal  Pulled     51m   kubelet            spec.containers{server}: Container image "ghcr.io/rajatrai30/microservices-demo/frontend:v0.10.5" already present on machine
 ```
 
 ## Install Argo Image Updater.
@@ -3184,13 +3184,13 @@ echo <TOKEN> | docker login ghcr.io \
 Tag/Retag your image:
 
 ```bash
-docker tag us-central1-docker.pkg.dev/google-samples/microservices-demo/adservice:v0.10.4 ghcr.io/rajatrai30/microservices-demo/adservice:v0.10.4
+docker tag us-central1-docker.pkg.dev/google-samples/microservices-demo/adservice:v0.10.5 ghcr.io/rajatrai30/microservices-demo/adservice:v0.10.5
 ```
 
 Push the image:
 
 ```bash
-  docker push ghcr.io/rajatrai30/microservices-demo/adservice:v0.10.4 
+  docker push ghcr.io/rajatrai30/microservices-demo/adservice:v0.10.5 
 ```
 </details>
 
@@ -3255,7 +3255,7 @@ oci://ghcr.io/<OWNER>/charts/onlineboutique
 Example:
 
 ```
-oci://ghcr.io/laxmikanta/charts/onlineboutique
+oci://ghcr.io/rajatrai30/charts/onlineboutique
 ```
 
 Do :
