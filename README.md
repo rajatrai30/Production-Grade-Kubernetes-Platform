@@ -97,21 +97,21 @@ They are built using **Microservices Architecture**.
 
 | **Service** | **Language** | **Description** |
 | --- | --- | --- |
-| [frontend](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/frontend) | Go | Exposes an HTTP server to serve the website. Does not require signup/login and generates session IDs for all users automatically. |
-| [cartservice](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/cartservice) | C# | Stores the items in the user's shopping cart in Redis and retrieves it. |
-| [productcatalogservice](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/productcatalogservice) | Go | Provides the list of products from a JSON file and ability to search products and get individual products. |
-| [currencyservice](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/currencyservice) | Node.js | Converts one money amount to another currency. Uses real values fetched from European Central Bank. It's the highest QPS service. |
-| [paymentservice](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/paymentservice) | Node.js | Charges the given credit card info (mock) with the given amount and returns a transaction ID. |
-| [shippingservice](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/shippingservice) | Go | Gives shipping cost estimates based on the shopping cart. Ships items to the given address (mock) |
-| [emailservice](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/emailservice) | Python | Sends users an order confirmation email (mock). |
-| [checkoutservice](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/checkoutservice) | Go | Retrieves user cart, prepares order and orchestrates the payment, shipping and the email notification. |
-| [recommendationservice](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/recommendationservice) | Python | Recommends other products based on what's given in the cart. |
-| [adservice](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/adservice) | Java | Provides text ads based on given context words. |
-| [loadgenerator](https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/loadgenerator) | Python/Locust | Continuously sends requests imitating realistic user shopping flows to the frontend. |
+| [frontend](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/frontend) | Go | Exposes an HTTP server to serve the website. Does not require signup/login and generates session IDs for all users automatically. |
+| [cartservice](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/cartservice) | C# | Stores the items in the user's shopping cart in Redis and retrieves it. |
+| [productcatalogservice](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/productcatalogservice) | Go | Provides the list of products from a JSON file and ability to search products and get individual products. |
+| [currencyservice](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/currencyservice) | Node.js | Converts one money amount to another currency. Uses real values fetched from European Central Bank. It's the highest QPS service. |
+| [paymentservice](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/paymentservice) | Node.js | Charges the given credit card info (mock) with the given amount and returns a transaction ID. |
+| [shippingservice](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/shippingservice) | Go | Gives shipping cost estimates based on the shopping cart. Ships items to the given address (mock) |
+| [emailservice](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/emailservice) | Python | Sends users an order confirmation email (mock). |
+| [checkoutservice](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/checkoutservice) | Go | Retrieves user cart, prepares order and orchestrates the payment, shipping and the email notification. |
+| [recommendationservice](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/recommendationservice) | Python | Recommends other products based on what's given in the cart. |
+| [adservice](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/adservice) | Java | Provides text ads based on given context words. |
+| [loadgenerator](https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo/blob/main/src/loadgenerator) | Python/Locust | Continuously sends requests imitating realistic user shopping flows to the frontend. |
 
 Screenshots:
 
-![image.png](docs/images/Screenshot01.png)
+![image.png](docs/images/Screenshot02.png)
 
 ---
 
@@ -293,7 +293,7 @@ There is **NO dedicated “orders database”**.
 Clone the repo:
 
 ```bash
-https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo.git
+https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo.git
 ```
 
 chnage directory to terraform:
@@ -327,7 +327,7 @@ Create a bucket using Console or AWS CLI.
 
 ```bash
 aws s3api create-bucket \
-  --bucket devopsdock-terraform-backend-bucket \
+  --bucket rajatraidevops-terraform-backend-bucket \
   --region us-east-1
 ```
 
@@ -336,12 +336,12 @@ Enable versioning and bucket encryption:
 ```bash
 # Enable versioning
 aws s3api put-bucket-versioning \
-  --bucket devopsdock-terraform-backend-bucket \
+  --bucket rajatraidevops-terraform-backend-bucket \
   --versioning-configuration Status=Enabled
 
 # Enable encryption
 aws s3api put-bucket-encryption \
-  --bucket devopsdock-terraform-backend-bucket \
+  --bucket rajatraidevops-terraform-backend-bucket \
   --server-side-encryption-configuration '{
     "Rules":[{
       "ApplyServerSideEncryptionByDefault":{
@@ -357,7 +357,7 @@ Add this below backend block in `terraform.tf` file
 ```bash
 terraform {
   backend "s3" {
-    bucket = "devopsdock-terraform-backend-bucket"
+    bucket = "rajatraidevops-terraform-backend-bucket"
     key    = "s3-backend"
     region = "us-east-1"
   }
@@ -622,13 +622,13 @@ spec:
   - name: http
     protocol: HTTP
     port: 80
-    hostname: "*.devopsdock.site"
+    hostname: "*.rajatraidevops.site"
     allowedRoutes:
       namespaces:
         from: All
   - name: https
     protocol: HTTPS
-    hostname: "*.devopsdock.site"
+    hostname: "*.rajatraidevops.site"
     port: 443
     allowedRoutes:
       namespaces:
@@ -853,7 +853,7 @@ configs:
     # -- List of hostnames for the HTTPRoute
     # @default -- `[]` (See [values.yaml])
     hostnames:
-      - argocd.devopsdock.site
+      - argocd.rajatraidevops.site
     # -- HTTPRoute rules configuration
     # @default -- `[]` (See [values.yaml])
     rules:
@@ -997,7 +997,7 @@ kubectl apply -f target-grp-config.yaml
 Access directly in the browser:
 
 ```bash
-https://argocd.devopsdock.site
+https://argocd.rajatraidevops.site
 ```
 
 To get the password and user:
@@ -1027,7 +1027,7 @@ Once you have the images in the github packages, connect them to the repository.
 
 So that it shows up and linked to your repo like this.
 
-![image-magik.png](docs/images/image-magik.png)
+![image-magik.png](docs/images/github-packages.png)
 
 Go to the image →Package Setting, and give permission to the repo to run action.
 
@@ -1046,15 +1046,15 @@ Think of it as:
 
 Without it → push fails even if workflow has write permission.
 
-![image.png](docs/images/image.png)
+![image.png](docs/images/package-1.png)
 
 Add the repository
 
-![image.png](docs/images/image%201.png)
+![image.png](docs/images/package-2.png)
 
 Give the package write permission.
 
-![image.png](docs/images/image%202.png)
+![image.png](docs/images/package-2.png)
 
 As the permission is set now. We will add the workflow files now.
 
@@ -1281,7 +1281,7 @@ In our case i kept in `microservices-extra-kube-manifests/` folder in the root d
       namespace: boutique-app
     spec:
       hostnames:
-        - "app.devopsdock.site"
+        - "app.rajatraidevops.site"
       parentRefs:
       - group: gateway.networking.k8s.io
         namespace: default
@@ -1354,7 +1354,7 @@ resources:
 
 helmCharts:
   - name: boutique-app
-    repo: oci://ghcr.io/laxmikantagiri/onlineboutique
+    repo: oci://ghcr.io/rajatrai30/onlineboutique
     version: 0.10.4
     releaseName: boutique-app
     namespace: boutique-app
@@ -1392,7 +1392,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/laxmikantagiri/Production-Grade_GitOps-Driven_Microservices-Demo.git
+    repoURL: https://github.com/rajatrai30/Production-Grade_GitOps-Driven_Microservices-Demo.git
     targetRevision: HEAD
     path: .
 
@@ -1416,7 +1416,7 @@ kubectl apply -f boutique-app.yaml
 
 Check the ArgoCD UI you should see the app visible there. And all Synced.
 
-![image.png](docs/images/image%203.png)
+![image.png](docs/images/argocd-1.png)
 
 # Now Lets integrate the CI with CD
 
@@ -1428,7 +1428,7 @@ So whenever CI part is done and the image is pushed to the registry the same ima
 #currently using the the older version of the image "v0.10.4"
 kubectl describe po frontend-7dd5db5f5-xb7g8 -n boutique-app | grep "image"
 
-Normal  Pulled     51m   kubelet            spec.containers{server}: Container image "ghcr.io/laxmikantagiri/microservices-demo/frontend:v0.10.4" already present on machine
+Normal  Pulled     51m   kubelet            spec.containers{server}: Container image "ghcr.io/rajatrai30/microservices-demo/frontend:v0.10.4" already present on machine
 ```
 
 ## Install Argo Image Updater.
@@ -1586,37 +1586,37 @@ spec:
 
       images:
         - alias: adservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/adservice
+          imageName: ghcr.io/rajatrai30/microservices-demo/adservice
 
         - alias: cartservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/cartservice
+          imageName: ghcr.io/rajatrai30/microservices-demo/cartservice
 
         - alias: checkoutservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/checkoutservice
+          imageName: ghcr.io/rajatrai30/microservices-demo/checkoutservice
 
         - alias: currencyservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/currencyservice
+          imageName: ghcr.io/rajatrai30/microservices-demo/currencyservice
 
         - alias: emailservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/emailservice
+          imageName: ghcr.io/rajatrai30/microservices-demo/emailservice
 
         - alias: frontend
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/frontend
+          imageName: ghcr.io/rajatrai30/microservices-demo/frontend
 
         - alias: paymentservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/paymentservice
+          imageName: ghcr.io/rajatrai30/microservices-demo/paymentservice
 
         - alias: productcatalogservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/productcatalogservice
+          imageName: ghcr.io/rajatrai30/microservices-demo/productcatalogservice
 
         - alias: recommendationservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/recommendationservice
+          imageName: ghcr.io/rajatrai30/microservices-demo/recommendationservice
 
         - alias: shippingservice
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/shippingservice
+          imageName: ghcr.io/rajatrai30/microservices-demo/shippingservice
 
         - alias: loadgenerator
-          imageName: ghcr.io/laxmikantagiri/microservices-demo/loadgenerator
+          imageName: ghcr.io/rajatrai30/microservices-demo/loadgenerator
 ```
 
 Apply it:
@@ -1636,11 +1636,11 @@ boutique-image-updater   13s
 
 Head to ArgoCD UI , and in separte tab run the CI pipeline or trigger it via chnaging the code you should see updated images automaticaaly picked. in ArgoCD
 
-![image.png](docs/images/image%204.png)
+![image.png](docs/images/argocd-2.png)
 
-![image.png](docs/images/image%205.png)
+![image.png](docs/images/argocd-pod.png)
 
-Access the website `app.devopsdock.site`
+Access the website `app.rajatraidevops.site`
 
 It should be accessible.
 
@@ -2098,11 +2098,11 @@ kubectl get svc -n monitoring
 
 You should see the Alert Firing messages and Integration messege on slack.
 
-![image.png](docs/images/image%2018.png)
+![image.png](docs/images/slack-1.png)
 
 You sill see both the resolved and firing alerts as we have set `resolved=true`
 
-![image.png](docs/images/image%2019.png)
+<!-- ![image.png](docs/images/image%2019.png) -->
 
 ### Now Lets Expose the **`Grafana`** and **`Prometheus`** and access the UI of them
 
@@ -2120,7 +2120,7 @@ metadata:
   namespace: monitoring
 spec:
   hostnames:
-    - "grafana.devopsdock.site"
+    - "grafana.rajatraidevops.site"
   parentRefs:
   - group: gateway.networking.k8s.io
     namespace: default
@@ -2175,7 +2175,7 @@ Get Grafana 'admin' user password by running:
 kubectl --namespace monitoring get secrets kube-prometheus-stack-grafana -o jsonpath="{.data.admin-password}" | base64 -d ; echo
 ```
 
-![image.png](docs/images/image%2021.png)
+![image.png](docs/images/grafana-1.png)
 
 You can see all the available metrices in the “Drilldown” section
 
@@ -2203,7 +2203,7 @@ metadata:
   namespace: monitoring
 spec:
   hostnames:
-    - "prometheus.devopsdock.site"
+    - "prometheus.rajatraidevops.site"
   parentRefs:
   - group: gateway.networking.k8s.io
     namespace: default
@@ -2258,13 +2258,13 @@ prometheus-tg-config   kube-prometheus-stack-prometheus   44s
 kubectl get httproute -n monitoring
 
 NAME               HOSTNAMES                   AGE
-grafana-route      ["grafana.devopsdock.site"]      30m
-prometheus-route   ["prometheus.devopsdock.site"]   41s
+grafana-route      ["grafana.rajatraidevops.site"]      30m
+prometheus-route   ["prometheus.rajatraidevops.site"]   41s
 ```
 
 Head to the browser and access it:
 
-![image.png](docs/images/image%2025.png)
+![image.png](docs/images/prometheus-1.png)
 
 Check all the availble metrices
 
@@ -2670,7 +2670,7 @@ metadata:
   namespace: logging
 spec:
   hostnames:
-    - "kibana.devopsdock.site"
+    - "kibana.rajatraidevops.site"
   parentRefs:
   - group: gateway.networking.k8s.io
     namespace: default
@@ -2741,7 +2741,7 @@ Verify:
 ```bash
 kubectl get httproute -n logging
 NAME           HOSTNAMES               AGE
-kibana-route   ["kibana.devopsdock.site"]   74s
+kibana-route   ["kibana.rajatraidevops.site"]   74s
 ```
 
 ```bash
@@ -2750,9 +2750,9 @@ NAME               SERVICE-NAME         AGE
 kibana-tg-config   eck-kibana-kb-http   85s
 ```
 
-Head to the browser and access you kibana UI using the host name “`kibana.dsvault.in`”
+Head to the browser and access you kibana UI using the host name “`kibana.rajatraidevops.site`”
 
-![image.png](docs/images/image%2028.png)
+![image.png](docs/images/kibana-1.png)
 
 The defaukt user is  **`elastic` .** Get you password from the below command
 
@@ -3117,11 +3117,11 @@ You should also scale:
 
 Same HPA structure, just change `name`.
 
-![image.png](docs/images/image%2036.png)
+![image.png](docs/images/Screenshot02.png)
 
-![image.png](docs/images/image%203.png)
+![image.png](docs/images/argocd-1.png)
 
-![image.png](docs/images/image%2037.png)
+![image.png](docs/images/kibana-1.png)
 
 ---
 
@@ -3184,13 +3184,13 @@ echo <TOKEN> | docker login ghcr.io \
 Tag/Retag your image:
 
 ```bash
-docker tag us-central1-docker.pkg.dev/google-samples/microservices-demo/adservice:v0.10.4 ghcr.io/laxmikantagiri/microservices-demo/adservice:v0.10.4
+docker tag us-central1-docker.pkg.dev/google-samples/microservices-demo/adservice:v0.10.4 ghcr.io/rajatrai30/microservices-demo/adservice:v0.10.4
 ```
 
 Push the image:
 
 ```bash
-  docker push ghcr.io/laxmikantagiri/microservices-demo/adservice:v0.10.4 
+  docker push ghcr.io/rajatrai30/microservices-demo/adservice:v0.10.4 
 ```
 </details>
 
@@ -3274,7 +3274,7 @@ Chart.yaml  README.md  onlineboutique-0.10.4.tgz  templates  values.yaml
 Push to the repository:
 
 ```bash
-helm push onlineboutique-0.10.4.tgz oci://ghcr.io/laxmikantagiri
+helm push onlineboutique-0.10.4.tgz oci://ghcr.io/rajatrai30
 ```
 
 Now you can directly install the package using the below command
@@ -3282,7 +3282,7 @@ Now you can directly install the package using the below command
 (Make sure its public)
 
 ```bash
-helm install boutique oci://ghcr.io/laxmikantagiri/onlineboutique --version 0.10.4
+helm install boutique oci://ghcr.io/rajatrai30/onlineboutique --version 0.10.4
 ```
 </details>
 
